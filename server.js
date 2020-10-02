@@ -32,13 +32,13 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 function signToken(userId) {
-    const expiry = new Date().setTime(new Date().getTime() + 60 * 60 * 1000); //one hour
+    const expiry = new Date().setTime(new Date().getTime() + Number(process.env.JWT_TOKEN_DURATION_SECONDS)); //one hour
     const token = JWT.sign({
         iss: 'SenecaCreative',
         sub: userId,
         iat: new Date().getTime(),
         exp: expiry
-    }, 'secret');
+    }, process.env.JWT_KEY);
 
     return token; ////change to env variable
 }

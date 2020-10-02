@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const HTTP_PORT = process.env.HTTP_PORT || 9090;
+const HTTP_PORT = process.env.PORT || 9090;
 const cors = require('cors');
 const ds = require('./data-service/data-service');
 const fs = require('fs');
